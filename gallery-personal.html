@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Gallery - Avraham Maisels</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Avraham Maisels</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#galleries">Galleries</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <!-- תפריט נייד -->
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <section class="gallery-page">
+      <h2>Personal Gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="images/personal/personal1.jpg" alt="Personal 1">
+        </div>
+        <div class="gallery-item">
+          <img src="images/personal/personal2.jpg" alt="Personal 2">
+        </div>
+        <div class="gallery-item">
+          <img src="images/personal/personal3.jpg" alt="Personal 3">
+        </div>
+        <div class="gallery-item">
+          <img src="images/personal/personal4.jpg" alt="Personal 4">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox Container -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Avraham Maisels. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript for Lightbox -->
+  <script src="js/lightbox.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

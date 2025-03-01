@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avraham Maisels - Photography Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+     html, body, header, nav, .navbar, .nav-links, main {
+    border: none;
+    }
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #000;
+    }
+    .navbar .nav-links li a {
+      color: #fff;
+      font-weight: bold;
+    }
+    .navbar .nav-links li a:hover {
+      color: #F39C12;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: #000;
+      min-width: 160px;
+      z-index: 100;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border: 1px solid #F39C12;
+    }
+    .dropdown-menu li a {
+      color: #fff;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+      font-weight: bold;
+    }
+    .dropdown-menu li a:hover {
+      background-color: #F39C12;
+      color: #000;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    .logo img {
+      max-height: 80px;
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      background-color: #F39C12;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .btn:hover {
+      background-color: #c56c06;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .slider-container {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+    }
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .slide.active {
+      opacity: 1;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    .slide-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+    }
+    .slide-caption {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .prev-btn,
+    .next-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
+    .carousel-gallery {
+      padding: 2rem 0;
+      background-color: #111;
+    }
+    .carousel-gallery h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .carousel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .carousel-item {
+      overflow: hidden;
+    }
+    .carousel-item img {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .carousel-item img:hover {
+      transform: scale(1.05);
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90%;
+    }
+    .lightbox .close {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      font-size: 40px;
+      color: #fff;
+      cursor: pointer;
+    }
+    .navbar .nav-links li a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .navbar .nav-links li a:hover {
+    color: #ccc;
+    background: none;
+    border: none;
+  }
+  .dropdown-menu {
+    background-color: #000;
+    border: none;
+  }
+  .dropdown-menu li a:hover {
+    background-color: #333;
+    color: #fff;
+  }
+  .navbar .nav-links li a {
+    font-family: 'Bradley Hand ITC', cursive;
+  }
+  .about-section {
+    background-color: #111;
+    text-align: center;
+    padding: 2rem 0;
+  }
+  .about-section .about-image img {
+    display: block;
+    margin: 0 auto;
+  }
+  .galleries-section {
+    background-color: #111;
+    padding: 2rem 0;
+  }
+  .galleries-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-items: center; /* Centers each grid cell's content */
+  }
+  .gallery-item {
+    width: 100%;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  .contact-section {
+    background-color: #111;
+    padding: 2rem 0;
+    text-align: center;
+  }
+  .contact-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .contact-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  .contact-section p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .contact-links a {
+  background: none !important;  /* override any button background */
+  border: none !important;
+  display: inline-block;
+  margin: 0 10px;
+  text-decoration: none;
+  padding: 0; /* remove leftover button padding */
+}
+.contact-links a:hover {
+  background: none;
+}
+  .contact-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.contact-logo {
+  width: 50px; 
+  height: auto;
+  transition: transform 0.3s ease;
+}
+.contact-logo:hover {
+  transform: scale(1.1);
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html"><img src="images/logo.png" alt="Logo"></a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li class="dropdown">
+          <a href="#">Galleries</a>
+          <ul class="dropdown-menu">
+            <li><a href="gallery-lookbooks.html">Lookbooks</a></li>
+            <li><a href="gallery-concerts.html">Concerts</a></li>
+            <li><a href="gallery-yoga.html">Yoga</a></li>
+            <li><a href="gallery-personal.html">Personal</a></li>
+          </ul>
+        </li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section id="home" class="hero-section">
+      <div class="slider-container" id="slider-container">
+        <div class="slide" data-index="0">
+          <img src="images/hero/hero1.jpg" alt="Hero Slide 1">
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">
+            <h1>Welcome to My Photography Portfolio</h1>
+            <p>Capturing the moments that captivate your heart</p>
+          </div>
+        </div>
+        <div class="slide" data-index="1">
+          <img src="images/hero/hero2.jpg" alt="Hero Slide 2">
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">
+            <h1>Professional Portrait Sessions</h1>
+            <p>Let's create timeless images together</p>
+          </div>
+        </div>
+        <div class="slide" data-index="2">
+          <img src="images/hero/hero3.jpg" alt="Hero Slide 3">
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">
+            <h1>Concert & Event Coverage</h1>
+            <p>Freeze the energy of live performances</p>
+          </div>
+        </div>
+        <div class="slide" data-index="3">
+          <img src="images/hero/hero4.jpg" alt="Hero Slide 4">
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">
+            <h1>Creative Lookbooks</h1>
+            <p>Unique style and vision</p>
+          </div>
+        </div>
+        <div class="slide" data-index="4">
+          <img src="images/hero/hero5.jpg" alt="Hero Slide 5">
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">
+            <h1>Vibrant Energy</h1>
+            <p>Live life in vibrant colors</p>
+          </div>
+        </div>
+        <div class="slide" data-index="5">
+          <img src="images/hero/hero6.jpg" alt="Hero Slide 6">
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">
+            <h1>Dynamic Performances</h1>
+            <p>Feel the beat and the passion</p>
+          </div>
+        </div>
+        <div class="slide" data-index="6">
+          <img src="images/hero/hero7.jpg" alt="Hero Slide 7">
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">
+            <h1>Unforgettable Moments</h1>
+            <p>Every shot tells a story</p>
+          </div>
+        </div>
+        <div class="slide" data-index="7">
+          <img src="images/hero/hero8.jpg" alt="Hero Slide 8">
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">
+            <h1>Artistic Vision</h1>
+            <p>Bringing creativity to life</p>
+          </div>
+        </div>
+        <div class="slide" data-index="8">
+          <img src="images/hero/hero9.jpg" alt="Hero Slide 9">
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">
+            <h1>High-Quality Prints</h1>
+            <p>Experience the best in photography</p>
+          </div>
+        </div>
+        <div class="slide" data-index="9">
+          <img src="images/hero/hero10.jpg" alt="Hero Slide 10">
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">
+            <h1>Modern & Bold</h1>
+            <p>Setting trends in the industry</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="carousel-gallery">
+      <div class="container">
+        <div class="carousel-grid" id="carousel-grid"></div>
+      </div>
+    </section>
+    <section id="about" class="about-section">
+      <div class="container">
+        <h2>About Me</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>Hello! I'm Avraham Maisels, a professional photographer specializing in lookbooks, concerts, and more. I capture moments with a creative edge and a passion for art.</p>
+          </div>
+          <div class="about-image">
+            <img src="images/photographer.jpg" alt="Avraham Maisels">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="galleries" class="galleries-section">
+      <div class="container">
+        <h2>Galleries</h2>
+        <div class="galleries-container">
+          <div class="gallery-item">
+            <a href="gallery-lookbooks.html"><img src="images/lookbooks/lookbook1.jpg" alt="Lookbooks"></a>
+          </div>
+          <div class="gallery-item">
+            <a href="gallery-concerts.html"><img src="images/concerts/concert1.jpg" alt="Concerts"></a>
+          </div>
+          <div class="gallery-item">
+            <a href="gallery-yoga.html"><img src="images/yoga/yoga1.jpg" alt="Yoga"></a>
+          </div>
+          <div class="gallery-item">
+            <a href="gallery-personal.html"><img src="images/personal/personal1.jpg" alt="Personal"></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>For inquiries, collaborations, or more details:</p>
+        <div class="contact-links">
+            <a href="https://wa.me/972587890150" target="_blank">
+              <img src="images/WhatsApp.jpeg" alt="WhatsApp" class="contact-logo">
+            </a>
+            <a href="https://www.instagram.com/avraham__photography?igsh=MWdzMTZvaXJ3dzJnbw==" target="_blank">
+              <img src="images/instagram.jpeg" alt="Instagram" class="contact-logo">
+            </a>
+          </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <p>© 2025 Avraham Maisels. All rights reserved.</p>
+    </div>
+  </footer>
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sliderContainer = document.getElementById('slider-container');
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      slides.sort(() => Math.random() - 0.5);
+      sliderContainer.innerHTML = '';
+      slides.forEach(slide => sliderContainer.appendChild(slide));
+      
+      let currentSliderIndex = 0;
+      function activateSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[index].classList.add('active');
+      }
+      activateSlide(currentSliderIndex);
+      const autoInterval = setInterval(() => {
+        currentSliderIndex = (currentSliderIndex + 1) % slides.length;
+        activateSlide(currentSliderIndex);
+      }, 3000);
+      
+      const sliderSources = slides.map(slide => slide.querySelector('img').src);
+      
+      function attachLightbox(img) {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', function(e) {
+          e.stopPropagation();
+          openLightbox(this.src);
+        });
+      }
+      
+      slides.forEach(slide => {
+        const sliderImg = slide.querySelector('img');
+        attachLightbox(sliderImg);
+      });
+      
+      const carouselGrid = document.getElementById('carousel-grid');
+      slides.forEach(slide => {
+        const imgSrc = slide.querySelector('img').src;
+        const altText = slide.querySelector('img').alt;
+        const div = document.createElement('div');
+        div.className = 'carousel-item';
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = altText;
+        attachLightbox(img);
+        div.appendChild(img);
+        carouselGrid.appendChild(div);
+      });
+      
+      let currentLightboxIndex = 0;
+      function openLightbox(src) {
+        currentLightboxIndex = sliderSources.indexOf(src);
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        lightboxImg.src = src;
+        lightbox.style.display = 'flex';
+      }
+      document.getElementById('lightbox-img').addEventListener('click', function() {
+        currentLightboxIndex = (currentLightboxIndex + 1) % sliderSources.length;
+        this.src = sliderSources[currentLightboxIndex];
+      });
+      document.querySelector('.lightbox .close').addEventListener('click', function() {
+        document.getElementById('lightbox').style.display = 'none';
+      });
+      document.getElementById('lightbox').addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
