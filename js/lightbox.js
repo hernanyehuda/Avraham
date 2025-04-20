@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const lightboxImg = document.getElementById('lightbox-img');
     const closeBtn = document.querySelector('.lightbox .close');
   
-    // מצא את כל התמונות בגלריה
     const galleryImages = document.querySelectorAll('.gallery-grid .gallery-item img');
   
     galleryImages.forEach(img => {
@@ -17,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
       lightbox.style.display = 'none';
     });
   
-    // סגירה כאשר לוחצים מחוץ לתמונה
     lightbox.addEventListener('click', function(e) {
       if (e.target !== lightboxImg) {
         lightbox.style.display = 'none';
