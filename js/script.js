@@ -149,3 +149,16 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const heroImages = document.querySelectorAll(".hero-section img[data-full]");
+
+  heroImages.forEach((img) => {
+    const fullSrc = img.getAttribute("data-full");
+    const fullImage = new Image();
+    fullImage.src = fullSrc;
+
+    fullImage.onload = () => {
+      img.src = fullSrc;
+    };
+  });
+});

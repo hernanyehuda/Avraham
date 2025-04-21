@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>lookbooks-gallery | Avraham Photography</title>
+  <title>Avraham Photography | Lookbooks</title>
   <link rel="icon" href="images/Logo.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,13 +11,11 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body>
+<body data-gallery="lookbooks">
   <header>
     <nav class="navbar">
       <div class="logo">
-        <h1>
-          <a href="index.html" style="color: inherit; text-decoration: none;">avraham photography</a>
-        </h1>
+        <h1><a href="index.html" style="color: inherit; text-decoration: none;">avraham photography</a></h1>
       </div>
       <ul class="nav-links">
         <li><a href="index.html#home">Home</a></li>
@@ -41,39 +39,14 @@
   </header>
 
   <main>
-    <!-- Gallery Slider Section -->
+    <!-- Slider -->
     <section id="home" class="hero-section">
-      <div class="slider-container" id="slider-container">
-        <div class="slide" data-index="0">
-          <img src="images/lookbooks/lookbook1.jpg" alt="Lookbook 1" />
-          <div class="slide-overlay"></div>
-        </div>
-        <div class="slide" data-index="1">
-          <img src="images/lookbooks/lookbook2.jpg" alt="Lookbook 2" />
-          <div class="slide-overlay"></div>
-        </div>
-        <div class="slide" data-index="2">
-          <img src="images/lookbooks/lookbook3.jpg" alt="Lookbook 3" />
-          <div class="slide-overlay"></div>
-        </div>
-        <div class="slide" data-index="3">
-          <img src="images/lookbooks/lookbook4.jpg" alt="Lookbook 4" />
-          <div class="slide-overlay"></div>
-        </div>
-        <div class="slide" data-index="4">
-          <img src="images/lookbooks/lookbook5.jpg" alt="Lookbook 5" />
-          <div class="slide-overlay"></div>
-        </div>
-        <div class="slide" data-index="5">
-          <img src="images/lookbooks/lookbook6.jpg" alt="Lookbook 6" />
-          <div class="slide-overlay"></div>
-        </div>
-      </div>
+      <div class="slider-container" id="slider-container"></div>
       <button class="prev-btn">&#10094;</button>
       <button class="next-btn">&#10095;</button>
     </section>
 
-    <!-- Thumbnails / Grid -->
+    <!-- Thumbnails -->
     <section class="carousel-gallery">
       <div class="container">
         <div class="carousel-grid" id="carousel-grid"></div>
@@ -81,7 +54,7 @@
     </section>
   </main>
 
-  <!-- Lightbox Container -->
+  <!-- Lightbox -->
   <div id="lightbox" class="lightbox">
     <span class="close">&times;</span>
     <img class="lightbox-content" id="lightbox-img" />
@@ -93,6 +66,6 @@
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script src="js/gallery.js"></script>
 </body>
 </html>
